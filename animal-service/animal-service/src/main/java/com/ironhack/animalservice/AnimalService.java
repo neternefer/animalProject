@@ -39,6 +39,17 @@ public class AnimalService {
         return result;
     }
 
+    public List<Animal> getByAgeAndType(Type type, int min, int max) {
+        List<Animal> result = new ArrayList<>();
+        List<Animal> typeAnimals = animalRepository.findByTypeAndAgeBetween(type, min, max);
+        for(Animal animal: typeAnimals) {
+            if(animal.isAvailable() == true) {
+                result.add(animal);
+            }
+        }
+        return result;
+    }
+
     public AnimalDTO update(long id) {
         Animal animal = animalRepository.findById(id).get();
         animal.setAvailable(false);

@@ -10,5 +10,6 @@ import java.util.List;
 public interface AnimalRepository extends JpaRepository<Animal, Long> {
     List<Animal> findByAgeBetween(int min, int max);
     List<Animal> findByType(Type type);
+    List<Animal> findByTypeAndAgeBetween(Type type, int min, int max);
 
 }
